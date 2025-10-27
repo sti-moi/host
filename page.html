@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Offres VPS Minecraft - NomDeVotreHébergeur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS de Base pour un Look Futuriste */
+        :root {
+            --couleur-fond: #121212; /* Fond très sombre */
+            --couleur-primaire: #00FFC0; /* Couleur néon/cybernétique (vert clair) */
+            --couleur-secondaire: #BB86FC; /* Couleur d'accentuation (violet) */
+            --couleur-texte: #E0E0E0; /* Texte clair */
+            --couleur-card-fond: #1E1E1E; /* Fond des cartes légèrement plus clair que le fond */
+            --couleur-card-bordure: #00FFC0;
+            --couleur-card-bordure-hover: #BB86FC;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace; /* Police mono ou futuriste */
+            background-color: var(--couleur-fond);
+            color: var(--couleur-texte);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* En-tête (Navigation) */
+        .header {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--couleur-primaire);
+        }
+
+        .logo a {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            text-shadow: 0 0 5px var(--couleur-primaire), 0 0 10px var(--couleur-primaire);
+        }
+
+        .nav a {
+            color: var(--couleur-texte);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--couleur-secondaire);
+            text-shadow: 0 0 5px var(--couleur-secondaire);
+        }
+
+        /* Section Principale - Conteneur des offres */
+        .pricing-section {
+            flex-grow: 1;
+            padding: 80px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pricing-section h1 {
+            font-size: 3em;
+            color: var(--couleur-primaire);
+            text-shadow: 0 0 7px var(--couleur-primaire), 0 0 15px var(--couleur-primaire);
+            margin-bottom: 20px;
+        }
+
+        .pricing-section p {
+            font-size: 1.2em;
+            margin-bottom: 60px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .pricing-cards-container {
+            display: flex;
+            flex-wrap: wrap; /* Permet aux cartes de passer à la ligne */
+            justify-content: center;
+            gap: 40px; /* Espace entre les cartes */
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Style des Cartes de Tarif */
+        .pricing-card {
+            background-color: var(--couleur-card-fond);
+            border: 2px solid var(--couleur-card-bordure); /* Bordure néon */
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px; /* Largeur fixe pour les cartes */
+            box-shadow: 0 0 15px rgba(0, 255, 192, 0.3); /* Ombre néon */
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden; /* Pour l'effet de coin */
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px); /* Léger soulèvement au survol */
+            border-color: var(--couleur-card-bordure-hover);
+            box-shadow: 0 0 25px rgba(187, 134, 252, 0.5); /* Changement d'ombre au survol */
+        }
+
+        .pricing-card h2 {
+            font-size: 1.8em;
+            color: var(--couleur-primaire);
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px var(--couleur-primaire);
+        }
+
+        .pricing-card .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--couleur-secondaire);
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px var(--couleur-secondaire);
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .pricing-card ul li::before {
+            content: '✓'; /* Symbole de coche futuriste */
+            color: var(--couleur-primaire);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .pricing-card .cta-button {
+            background-color: var(--couleur-primaire);
+            color: var(--couleur-fond);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--couleur-primaire);
+            display: inline-block; /* Pour qu'il prenne moins de place et soit centré */
+            width: auto;
+        }
+
+        .pricing-card .cta-button:hover {
+            background-color: #00E6B8;
+            box-shadow: 0 0 20px var(--couleur-primaire);
+        }
+
+        /* Pied de Page */
+        .footer {
+            background-color: #0A0A0A;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 0.9em;
+            border-top: 1px dashed var(--couleur-secondaire);
+            margin-top: auto; /* Pousse le footer vers le bas */
+        }
+
+        /* Media Queries pour la responsivité */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            .nav {
+                margin-top: 15px;
+            }
+            .nav a {
+                margin: 0 10px;
+            }
+            .pricing-section h1 {
+                font-size: 2.5em;
+            }
+            .pricing-card {
+                width: 90%; /* Prend plus de largeur sur petits écrans */
+            }
+            .pricing-cards-container {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="main.html">SYSTEME_HOST</a>
+        </div>
+        <nav class="nav">
+            <a href="main.html#hebergement-web">Hébergement WEB</a>
+            <a href="main.html#hebergement-bot">Hébergement BOT</a>
+            <a href="#tarifs">Tarifs VPS</a>
+            <a href="#connexion">Connexion</a>
+        </nav>
+    </header>
+
+    <main class="pricing-section">
+        <h1>🚀 | PLANS VPS MINECRAFT : ACCÈS CYBERNÉTIQUE</h1>
+        <p>Découvrez nos offres VPS optimisées pour Minecraft. Des ressources dédiées et un Anti-DDoS Game pour une expérience de jeu fluide et sans interruption.</p>
+
+        <div class="pricing-cards-container">
+
+            <div class="pricing-card">
+                <h2>PROTOCOLE-4G</h2>
+                <p>Le Découvreur</p>
+                <p class="price">5.49€<span style="font-size: 0.6em;">/mois</span></p>
+                <ul>
+                    <li>2 vCore (Haute Fréquence)</li>
+                    <li>4 Go DDR4 ECC RAM</li>
+                    <li>40 Go NVMe SSD</li>
+                    <li>500 Mbps | Anti-DDoS Game</li>
+                    <li>Idéal pour 4-8 joueurs</li>
+                </ul>
+                <a href="#" class="cta-button">Déployer ce Plan</a>
+            </div>
+
+            <div class="pricing-card">
+                <h2>VECTOR-8G</h2>
+                <p>L'Équilibré</p>
+                <p class="price">8.79€<span style="font-size: 0.6em;">/mois</span></p>
+                <ul>
+                    <li>3 vCore (Haute Fréquence)</li>
+                    <li>8 Go DDR4 ECC RAM</li>
+                    <li>80 Go NVMe SSD</li>
+                    <li>1 Gbps | Anti-DDoS Game</li>
+                    <li>Le best-seller (10-20 joueurs)</li>
+                </ul>
+                <a href="#" class="cta-button">Déployer ce Plan</a>
+            </div>
+
+            <div class="pricing-card">
+                <h2>QUANTUM-16G</h2>
+                <p>Le Spécialiste</p>
+                <p class="price">16.49€<span style="font-size: 0.6em;">/mois</span></p>
+                <ul>
+                    <li>4 vCore (Haute Fréquence DÉDIÉ)</li>
+                    <li>16 Go DDR4 ECC RAM</li>
+                    <li>160 Go NVMe SSD</li>
+                    <li>1 Gbps DÉDIÉ | Anti-DDoS Game PRO</li>
+                    <li>Pour gros serveurs (30-50+ joueurs)</li>
+                </ul>
+                <a href="#" class="cta-button">Déployer ce Plan</a>
+            </div>
+
+        </div> </main>
+
+    <footer class="footer">
+        &copy; 2025 NomDeVotreHébergeur. Tous droits réservés. | Accès Protocolaire V.2.0
+    </footer>
+
+</body>
+</html>

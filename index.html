@@ -52,13 +52,8 @@
             transition: color 0.3s;
         }
 
-        /* LIEN VERS LES TARIFS : ASSUREZ-VOUS QUE LE FICHIER EXISTE */
-        /* Si vous avez nommé votre page de tarifs vps-minecraft.html, ajustez le lien ci-dessous. */
-        .nav a[href="tarifs.html"] {
-             color: var(--couleur-secondaire); /* Met en évidence le lien Tarifs */
-             font-weight: bold;
-        }
-
+        /* Le lien vers la page actuelle (index.html) n'a pas besoin d'être mis en évidence */
+        /* mais les autres liens devraient fonctionner correctement au survol */
         .nav a:hover {
             color: var(--couleur-secondaire);
             text-shadow: 0 0 5px var(--couleur-secondaire);
@@ -114,6 +109,27 @@
             text-align: center;
             font-size: 0.9em;
             border-top: 1px dashed var(--couleur-secondaire);
+            margin-top: auto; /* Assure que le footer est toujours en bas */
+        }
+        
+        /* Media Queries pour la responsivité */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            .nav {
+                margin-top: 15px;
+            }
+            .nav a {
+                margin: 0 10px;
+            }
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            .hero-section p {
+                font-size: 1.2em;
+            }
         }
 
     </style>
@@ -125,8 +141,8 @@
             <a href="index.html">SYSTEME_HOST</a>
         </div>
         <nav class="nav">
-            <a href="#hebergement-web">Hébergement WEB</a>
-            <a href="#hebergement-bot">Hébergement BOT</a>
+            <a href="hebergement-web.html">Hébergement WEB</a>
+            <a href="hebergement-bot.html">Hébergement BOT</a>
             <a href="tarifs.html">Tarifs VPS</a> 
             <a href="#connexion">Connexion</a>
         </nav>

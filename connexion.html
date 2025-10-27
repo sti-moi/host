@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - SYSTEME_HOST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS de Base (COPIE DU STYLE GLOBAL) */
+        :root {
+            --couleur-fond: #121212;
+            --couleur-primaire: #00FFC0;
+            --couleur-secondaire: #BB86FC;
+            --couleur-texte: #E0E0E0;
+            --couleur-input-fond: #2a2a2a;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: var(--couleur-fond);
+            color: var(--couleur-texte);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* En-tête (Navigation) */
+        .header {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--couleur-primaire);
+        }
+
+        .logo a {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            text-shadow: 0 0 5px var(--couleur-primaire), 0 0 10px var(--couleur-primaire);
+        }
+
+        .nav a {
+            color: var(--couleur-texte);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        
+        .nav a[href="#connexion"] {
+             color: var(--couleur-secondaire);
+             font-weight: bold;
+        }
+
+        .nav a:hover {
+            color: var(--couleur-secondaire);
+            text-shadow: 0 0 5px var(--couleur-secondaire);
+        }
+
+        /* Section Connexion */
+        .login-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .login-box {
+            background-color: var(--couleur-input-fond);
+            padding: 40px;
+            border-radius: 10px;
+            border: 2px solid var(--couleur-secondaire);
+            box-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-box h1 {
+            font-size: 2em;
+            color: var(--couleur-primaire);
+            text-shadow: 0 0 5px var(--couleur-primaire);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--couleur-secondaire);
+            font-weight: bold;
+            text-shadow: 0 0 3px var(--couleur-secondaire);
+        }
+
+        .form-group input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid var(--couleur-secondaire);
+            background-color: var(--couleur-fond);
+            color: var(--couleur-texte);
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--couleur-primaire);
+            box-shadow: 0 0 8px var(--couleur-primaire);
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: var(--couleur-primaire);
+            color: var(--couleur-fond);
+            padding: 12px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--couleur-primaire);
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            background-color: #00E6B8;
+            box-shadow: 0 0 20px var(--couleur-primaire);
+        }
+
+        .error-message {
+            color: #FF6347; /* Rouge futuriste pour les erreurs */
+            font-size: 0.9em;
+            margin-top: 15px;
+            text-shadow: 0 0 2px #FF6347;
+            display: none; /* Caché par défaut */
+        }
+
+        /* Pied de Page */
+        .footer {
+            background-color: #0A0A0A;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 0.9em;
+            border-top: 1px dashed var(--couleur-secondaire);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">SYSTEME_HOST</a>
+        </div>
+        <nav class="nav">
+            <a href="hebergement-web.html">Hébergement WEB</a>
+            <a href="hebergement-bot.html">Hébergement BOT</a>
+            <a href="tarifs.html">Tarifs VPS</a>
+            <a href="connexion.html">Connexion</a>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <h1>ACCÈS AU PANNEAU PROTOCLAIRE</h1>
+
+            <form id="loginForm" onsubmit="return validateLogin()">
+                <div class="form-group">
+                    <label for="username">Identifiant Cybernétique (Email/Pseudo)</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Clé d'Accès (Mot de Passe)</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <button type="submit" class="submit-button">INITIER LA SÉQUENCE</button>
+                
+                <p id="errorMessage" class="error-message">Erreur : Veuillez renseigner tous les champs.</p>
+                
+                <p style="font-size: 0.9em; margin-top: 20px;">
+                    <a href="#" style="color: var(--couleur-secondaire); text-decoration: none;">Mot de passe oublié ?</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        &copy; 2025 SYSTEME_HOST. Tous droits réservés. | Accès Protocolaire V.2.0
+    </footer>
+
+    <script>
+        // CODE JAVASCRIPT POUR LA VALIDATION CÔTÉ CLIENT
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            // 1. Validation Basique : vérifier si les champs sont vides
+            if (username.trim() === '' || password.trim() === '') {
+                errorMessage.style.display = 'block';
+                return false; // Empêche l'envoi du formulaire
+            }
+            
+            // 2. Simulation de l'Authentification (puisque nous n'avons pas de serveur)
+            // Dans un vrai site, le code ici enverrait les données au serveur.
+
+            // --- DEBUT SIMULATION ---
+            errorMessage.style.display = 'none';
+            alert('Authentification initiée ! (Ceci est une simulation statique. Le vrai processus nécessite un serveur.)');
+            // Vous pouvez rediriger l'utilisateur vers une fausse page de tableau de bord
+            // window.location.href = 'dashboard.html'; 
+            return false; // Empêche l'envoi réel pour la démo
+            // --- FIN SIMULATION ---
+        }
+    </script>
+
+</body>
+</html>

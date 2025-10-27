@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hébergement Bot Discord - SYSTEME_HOST</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS de Base (COPIE DU STYLE GLOBAL) */
+        :root {
+            --couleur-fond: #121212;
+            --couleur-primaire: #00FFC0;
+            --couleur-secondaire: #BB86FC;
+            --couleur-texte: #E0E0E0;
+            --couleur-card-fond: #1E1E1E;
+            --couleur-card-bordure: #00FFC0;
+            --couleur-card-bordure-hover: #BB86FC;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: var(--couleur-fond);
+            color: var(--couleur-texte);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* En-tête (Navigation) */
+        .header {
+            background-color: rgba(30, 30, 30, 0.8);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--couleur-primaire);
+        }
+
+        .logo a {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--couleur-primaire);
+            text-decoration: none;
+            text-shadow: 0 0 5px var(--couleur-primaire), 0 0 10px var(--couleur-primaire);
+        }
+
+        .nav a {
+            color: var(--couleur-texte);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        /* Mise en évidence du lien actuel */
+        .nav a[href="hebergement-bot.html"] {
+             color: var(--couleur-secondaire);
+             font-weight: bold;
+        }
+
+        .nav a:hover {
+            color: var(--couleur-secondaire);
+            text-shadow: 0 0 5px var(--couleur-secondaire);
+        }
+
+        /* Section Principale - Conteneur des offres */
+        .pricing-section {
+            flex-grow: 1;
+            padding: 80px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pricing-section h1 {
+            font-size: 3em;
+            color: var(--couleur-secondaire); /* On change la couleur principale ici pour distinguer */
+            text-shadow: 0 0 7px var(--couleur-secondaire), 0 0 15px var(--couleur-secondaire);
+            margin-bottom: 20px;
+        }
+
+        .pricing-section p {
+            font-size: 1.2em;
+            margin-bottom: 60px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .pricing-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Style des Cartes de Tarif */
+        .pricing-card {
+            background-color: var(--couleur-card-fond);
+            border: 2px solid var(--couleur-secondaire); /* Bordure néon violet */
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 0 15px rgba(187, 134, 252, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--couleur-primaire);
+            box-shadow: 0 0 25px rgba(0, 255, 192, 0.5); /* Changement d'ombre au survol */
+        }
+
+        .pricing-card h2 {
+            font-size: 1.8em;
+            color: var(--couleur-secondaire);
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px var(--couleur-secondaire);
+        }
+
+        .pricing-card .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--couleur-primaire);
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px var(--couleur-primaire);
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .pricing-card ul li::before {
+            content: '★'; /* Symbole pour les bots */
+            color: var(--couleur-secondaire);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .pricing-card .cta-button {
+            background-color: var(--couleur-secondaire);
+            color: var(--couleur-fond);
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--couleur-secondaire);
+            display: inline-block;
+            width: auto;
+        }
+
+        .pricing-card .cta-button:hover {
+            background-color: #A36BE8;
+            box-shadow: 0 0 20px var(--couleur-secondaire);
+        }
+
+        /* Pied de Page */
+        .footer {
+            background-color: #0A0A0A;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 0.9em;
+            border-top: 1px dashed var(--couleur-secondaire);
+            margin-top: auto;
+        }
+
+        /* Media Queries pour la responsivité */
+        @media (max-width: 768px) {
+             /* ... (Même media queries que les autres pages) ... */
+            .pricing-section h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <a href="index.html">SYSTEME_HOST</a>
+        </div>
+        <nav class="nav">
+            <a href="hebergement-web.html">Hébergement WEB</a>
+            <a href="hebergement-bot.html">Hébergement BOT</a>
+            <a href="tarifs.html">Tarifs VPS</a>
+            <a href="#connexion">Connexion</a>
+        </nav>
+    </header>
+
+    <main class="pricing-section">
+        <h1>🤖 | DÉPLOIEMENT DE BOTS DISCORD : PROTOCOLE RAPIDE</h1>
+        <p>Hébergez vos Bots 24/7 avec une stabilité garantie et une faible latence. Nos plans sont optimisés pour Node.js, Python, et autres environnements.</p>
+
+        <div class="pricing-cards-container">
+
+            
+<div class="pricing-card">
+                <h2>MICRO-CORE (0.5G)</h2>
+                <p>Bot Personnel / Léger</p>
+                <p class="price">2.99€<span style="font-size: 0.6em;">/mois</span></p>
+                <ul>
+                    <li>512 Mo RAM Dédiée</li>
+                    <li>CPU 50% Garanti</li>
+                    <li>5 Go NVMe SSD</li>
+                    <li>Node.js, Python, Java</li>
+                    <li>Panel Pterodactyl inclus</li>
+                </ul>
+                <a href="#" class="cta-button">Lancer la Connexion</a>
+            </div>
+
+            
+<div class="pricing-card">
+                <h2>SYNAPSE (1G)</h2>
+                <p>Petit Bot Communautaire</p>
+                <p class="price">4.99€<span style="font-size: 0.6em;">/mois</span></p>
+                <ul>
+                    <li>1 Go RAM Dédiée</li>
+                    <li>CPU 100% Garanti</li>
+                    <li>10 Go NVMe SSD</li>
+                    <li>Accès SFTP & Console</li>
+                    <li>Base de données offerte</li>
+                </ul>
+                <a href="#" class="cta-button">Lancer la Connexion</a>
+            </div>
+
+            
+<div class="pricing-card">
+                <h2>NEURONE (2G)</h2>
+                <p>Bot Multi-Fonctions / Modération</p>
+                <p class="price">8.99€<span style="font-size: 0.6em;">/mois</span></p>
+                <ul>
+                    <li>2 Go RAM Dédiée</li>
+                    <li>CPU DÉDIÉ (Haute Fréquence)</li>
+                    <li>20 Go NVMe SSD</li>
+                    <li>Traffic Illimité</li>
+                    <li>Garantie Uptime 99.9%</li>
+                </ul>
+                <a href="#" class="cta-button">Lancer la Connexion</a>
+            </div>
+
+        </div> 
+</main>
+
+    <footer class="footer">
+        &copy; 2025 SYSTEME_HOST. Tous droits réservés. | Accès Protocolaire V.2.0
+    </footer>
+
+</body>
+</html>
